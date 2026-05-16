@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 // The palette is single-origin earth: warm paper, deep green, ink black.
 // Typography carries all hierarchy; colour speaks only for status and accent.
 
-// ─── Colour ─────────────────────────────────────────────────────────────────
+// ─── Colour ───────────────────────────────────────────────────────────[...]
 
 const colors = {
   // Background — one dominant base
@@ -46,7 +46,7 @@ const colors = {
   },
 };
 
-// ─── Spacing ─────────────────────────────────────────────────────────────────
+// ─── Spacing ──────────────────────────────────────────────────────────[...]
 
 const space = {
   gutter: 24,
@@ -60,13 +60,13 @@ const sectionY = (desktop) => ({
   paddingBlock: desktop ? `${space.section}px` : `${space.sectionNarrow}px`,
 });
 
-// ─── Typography Scale ────────────────────────────────────────────────────────
+// ─── Typography Scale ───────────────────────────────────────────────────────[...]
 // Single family for body; one display weight for titles.
 // Leading is tight (1.3) for headings, generous (1.65) for body.
 
 const type = {
   fontFamily: {
-    body:      'var(--font-body, "Aptos", "Segoe UI Variable", system-ui, sans-serif)',
+    body:      'var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif)',
     display:   'var(--font-display, "Iowan Old Style", "Noto Serif", Georgia, serif)',
     mono:      '"SF Mono", "Cascadia Code", "Consolas", monospace',
   },
@@ -111,9 +111,10 @@ const shadow = {
   sm: '0 2px 6px rgba(19,17,15,.06), 0 1px 2px rgba(19,17,15,.04)',
   md: '0 4px 12px rgba(19,17,15,.07), 0 2px 4px rgba(19,17,15,.04)',
   lg: '0 8px 24px rgba(19,17,15,.09), 0 3px 8px rgba(19,17,15,.04)',
+  xl: '0 12px 40px rgba(19,17,15,.12), 0 4px 12px rgba(19,17,15,.05)',
 };
 
-// ─── Animation Timing ────────────────────────────────────────────────────────
+// ─── Animation Timing ───────────────────────────────────────────────────────[...]
 
 const motion = {
   fast:     '120ms cubic-bezier(0.4, 0, 0.2, 1)',
@@ -123,7 +124,7 @@ const motion = {
   slideUp:  { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: 8 } },
 };
 
-// ─── Breakpoints ─────────────────────────────────────────────────────────────
+// ─── Breakpoints ────────────────────────────────────────────────────────[...]
 
 const breakpoints = {
   sm: '640px',
@@ -274,7 +275,11 @@ function overrides() {
             borderRadius: radius.lg,
             backgroundColor: colors.surface,
             border: `1px solid ${colors.horizon}`,
-            transition: `box-shadow ${motion.base}, border-color ${motion.fast}`,
+            transition: `box-shadow ${motion.base}, border-color ${motion.fast}, transform ${motion.base}`,
+            '&:hover': {
+              boxShadow: shadow.sm,
+              borderColor: colors.wireframe,
+            },
           },
         },
       },
@@ -288,6 +293,18 @@ function overrides() {
             fontWeight: 500,
             letterSpacing: type.tracking.normal,
             transition: `all ${motion.fast}`,
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+              transition: `background-color ${motion.fast}`,
+            },
+            '&:active::before': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            },
           },
           containedPrimary: {
             backgroundColor: colors.green[600],
@@ -295,7 +312,17 @@ function overrides() {
             boxShadow: 'none',
             '&:hover': {
               backgroundColor: colors.green[700],
+              boxShadow: shadow.md,
+              transform: 'translateY(-2px)',
+            },
+            '&:active': {
+              transform: 'translateY(0)',
               boxShadow: shadow.sm,
+            },
+            '&:disabled': {
+              backgroundColor: colors.ghost,
+              color: colors.quiet,
+              boxShadow: 'none',
             },
           },
           containedSecondary: {
@@ -305,10 +332,17 @@ function overrides() {
             '&:hover': {
               backgroundColor: colors.elevated,
               borderColor: colors.horizon,
+              boxShadow: shadow.xs,
             },
           },
           contained: {
             boxShadow: 'none',
+          },
+          outlined: {
+            '&:hover': {
+              backgroundColor: colors.elevated,
+              borderColor: colors.wireframe,
+            },
           },
           text: {
             backgroundColor: 'transparent',
@@ -329,12 +363,20 @@ function overrides() {
             fontWeight: 500,
             fontSize: type.xs,
             letterSpacing: type.tracking.wide,
+            transition: `all ${motion.fast}`,
+            '&:hover': {
+              backgroundColor: colors.elevated,
+            },
           },
           filled: { border: `1px solid transparent` },
           outlined: {
             backgroundColor: 'transparent',
             borderColor: colors.wireframe,
             color: colors.muted,
+            '&:hover': {
+              borderColor: colors.horizon,
+              backgroundColor: colors.elevated,
+            },
           },
         },
       },
@@ -343,7 +385,7 @@ function overrides() {
         styleOverrides: {
           paper: {
             borderRadius: radius.xl,
-            boxShadow: shadow.lg,
+            boxShadow: shadow.xl,
           },
         },
       },
@@ -364,9 +406,14 @@ function overrides() {
           root: {
             backgroundColor: colors.elevated,
             borderRadius: radius.md,
+            transition: `all ${motion.fast}`,
             '& .MuiOutlinedInput-notchedOutline': { borderColor: colors.horizon },
             '&:hover .MuiOutlinedInput-notchedOutline':   { borderColor: colors.wireframe },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: colors.green[500], borderWidth: '1.5px' },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { 
+              borderColor: colors.green[500], 
+              borderWidth: '2px',
+              boxShadow: `0 0 0 3px ${colors.green[50]}`,
+            },
           },
           notchedOutline: {},
         },
@@ -390,8 +437,9 @@ function overrides() {
         styleOverrides: {
           root: { minHeight: 48, borderBottom: `1px solid ${colors.horizon}` },
           indicator: {
-            height: 2,
+            height: 3,
             backgroundColor: colors.green[600],
+            borderRadius: radius.pill,
           },
         },
       },
@@ -402,7 +450,14 @@ function overrides() {
             fontSize: type.sm,
             textTransform: 'none',
             minHeight: 48,
-            '&.Mui-selected': { color: colors.green[700] },
+            transition: `all ${motion.fast}`,
+            '&.Mui-selected': { 
+              color: colors.green[700],
+              fontWeight: 600,
+            },
+            '&:hover': {
+              color: colors.ink,
+            },
           },
         },
       },
@@ -414,6 +469,7 @@ function overrides() {
             backgroundColor: colors.surface,
             borderBottom: `1px solid ${colors.horizon}`,
             color: colors.ink,
+            boxShadow: shadow.xs,
           },
         },
       },
@@ -424,6 +480,7 @@ function overrides() {
             backgroundColor: colors.ink,
             color: colors.surface,
             borderRadius: radius.md,
+            boxShadow: shadow.lg,
           },
         },
       },
