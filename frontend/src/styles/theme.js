@@ -1,139 +1,155 @@
 import { createTheme } from '@mui/material/styles';
-// Creative direction: "Field Truth"
-// Every row on the market board is a record in a shared agricultural ledger.
-// The palette is single-origin earth: warm paper, deep green, ink black.
-// Typography carries all hierarchy; colour speaks only for status and accent.
 
-// ─── Colour ───────────────────────────────────────────────────────────[...]
+// Creative direction: "Field Truth" — Refined & Modern
+// A calm, modern agricultural marketplace with premium feel
+// Clean lines, generous whitespace, and purposeful color usage
+
+// ─── Colour ───────────────────────────────────────────────────────────
 
 const colors = {
-  // Background — one dominant base
-  paper:      '#FAF9F6',
+  // Modern neutral base
+  paper:      '#FAFBFC',
   surface:    '#FFFFFF',
-  elevated:   '#F6F4EF',
-  scrollbar:  '#EFECE6',
-  // Border / structure
-  horizon:    '#E8E4DC',
-  wireframe:  '#D9D4CA',
-  // Text — ink scale, four stops
-  ink:        '#13110F',
-  muted:      '#6B645B',
-  quiet:      '#948D82',
-  ghost:      '#BAB3A8',
-  // Accent — forest green (one accent, unlimited weight)
+  elevated:   '#F8FAFC',
+  bg:         '#F0F4F8',
+  scrollbar:  '#E8ECEF',
+  
+  // Refined borders
+  horizon:    '#E2E8EF',
+  wireframe:  '#D4DDE5',
+  
+  // Text — refined scale
+  ink:        '#0F172A',
+  muted:      '#475569',
+  quiet:      '#64748B',
+  ghost:      '#94A3B8',
+  
+  // Primary accent — modern forest green
   green: {
-    50:  '#EDF7F0',
-    100: '#D3EDDC',
-    200: '#A8DCA8',
-    300: '#72C57A',
-    400: '#42A74E',
-    500: '#2E6B41',
-    600: '#235132',
-    700: '#1A3F29',
-    800: '#122E1F',
-    900: '#0B2217',
+    50:  '#F0FDF4',
+    100: '#DCFCE7',
+    200: '#BBF7D0',
+    300: '#86EFAC',
+    400: '#4ADE80',
+    500: '#22C55E',
+    600: '#16A34A',
+    700: '#15803D',
+    800: '#166534',
+    900: '#145231',
   },
-  // Supporting neutrals (used only for status)
+  
+  // Secondary emerald for depth
+  emerald: {
+    50:  '#F0FDF4',
+    100: '#DBEAFE',
+    500: '#10B981',
+    600: '#059669',
+  },
+  
+  // Status colors — modern palette
   status: {
-    ok:       '#2E6B41',
-    okLight:  '#EDF7F0',
-    caution:  '#A67200',
-    cautionLight: '#FFF9E6',
-    danger:   '#9B2335',
-    dangerLight: '#FEF2F4',
-    info:     '#2A5470',
-    infoLight: '#EEF4F8',
+    ok:         '#22C55E',
+    okLight:    '#F0FDF4',
+    caution:    '#F59E0B',
+    cautionLight: '#FFFBEB',
+    danger:     '#EF4444',
+    dangerLight: '#FEF2F2',
+    info:       '#3B82F6',
+    infoLight:  '#EFF6FF',
   },
 };
 
-// ─── Spacing ──────────────────────────────────────────────────────────[...]
+// ─── Spacing ──────────────────────────────────────────────────────────
 
 const space = {
-  gutter: 24,
-  gutterNarrow: 16,
-  section: 64,
-  sectionNarrow: 40,
-  cell: 8,          // base unit — multiples only
+  xs:    4,
+  sm:    8,
+  md:    12,
+  lg:    16,
+  xl:    24,
+  '2xl': 32,
+  '3xl': 48,
+  '4xl': 64,
 };
 
-const sectionY = (desktop) => ({
-  paddingBlock: desktop ? `${space.section}px` : `${space.sectionNarrow}px`,
-});
-
-// ─── Typography Scale ───────────────────────────────────────────────────────[...]
-// Single family for body; one display weight for titles.
-// Leading is tight (1.3) for headings, generous (1.65) for body.
+// ─── Typography ───────────────────────────────────────────────────────
 
 const type = {
   fontFamily: {
-    body:      'var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif)',
-    display:   'var(--font-display, "Iowan Old Style", "Noto Serif", Georgia, serif)',
-    mono:      '"SF Mono", "Cascadia Code", "Consolas", monospace',
+    body:    'var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif)',
+    display: 'var(--font-display, "Iowan Old Style", "Noto Serif", Georgia, serif)',
+    mono:    '"SF Mono", "Cascadia Code", "Consolas", monospace',
   },
-  // Font-size clamp: scales fluidly between breakpoints
-  // formula: clamp(min, preferred, max)
-  // 1rem = 16px
-  xs:   'clamp(0.75rem,  0.72rem  + 0.15vw, 0.8rem)',
-  sm:   'clamp(0.813rem, 0.77rem  + 0.21vw, 0.875rem)',
-  body: 'clamp(0.875rem, 0.81rem  + 0.32vw, 1rem)',
-  lg:   'clamp(1rem,     0.9rem   + 0.5vw,  1.125rem)',
-  xl:   'clamp(1.188rem, 1rem     + 0.94vw, 1.563rem)',
-  '2xl': 'clamp(1.438rem, 1.2rem   + 1.19vw, 1.875rem)',
-  '3xl': 'clamp(1.75rem,  1.4rem   + 1.75vw, 2.375rem)',
-  '4xl': 'clamp(2.125rem, 1.6rem   + 2.63vw, 2.813rem)',
-  // Letter-spacing
+  
+  size: {
+    xs:   '12px',
+    sm:   '13px',
+    body: '14px',
+    lg:   '16px',
+    xl:   '18px',
+    '2xl': '20px',
+    '3xl': '24px',
+    '4xl': '32px',
+  },
+  
   tracking: {
-    tight:    '-0.025em',
-    normal:   '0',
-    wide:     '0.025em',
+    tight:  '-0.02em',
+    normal: '0',
+    wide:   '0.02em',
   },
-  // Line-height
+  
   leading: {
-    tight:  1.3,
-    snug:   1.4,
-    regular:1.65,
-    loose:  1.85,
+    tight:   1.2,
+    snug:    1.4,
+    normal:  1.6,
+    relaxed: 1.8,
   },
 };
 
-// ─── Border Radius & Elevation ────────────────────────────────────────────────
+// ─── Border Radius ────────────────────────────────────────────────────
 
 const radius = {
-  sm:  '4px',
-  md:  '6px',
-  lg:  '8px',
-  xl:  '12px',
-  pill:'999px',
+  none:  '0px',
+  xs:    '4px',
+  sm:    '6px',
+  md:    '8px',
+  lg:    '12px',
+  xl:    '16px',
+  '2xl': '20px',
+  pill:  '999px',
 };
+
+// ─── Shadows ──────────────────────────────────────────────────────────
 
 const shadow = {
-  xs: '0 1px 2px rgba(19,17,15,.04)',
-  sm: '0 2px 6px rgba(19,17,15,.06), 0 1px 2px rgba(19,17,15,.04)',
-  md: '0 4px 12px rgba(19,17,15,.07), 0 2px 4px rgba(19,17,15,.04)',
-  lg: '0 8px 24px rgba(19,17,15,.09), 0 3px 8px rgba(19,17,15,.04)',
-  xl: '0 12px 40px rgba(19,17,15,.12), 0 4px 12px rgba(19,17,15,.05)',
+  none:   'none',
+  xs:     '0 1px 2px 0 rgba(15, 23, 42, 0.05)',
+  sm:     '0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.04)',
+  md:     '0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.05)',
+  lg:     '0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05)',
+  xl:     '0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05)',
+  '2xl':  '0 25px 50px -12px rgba(15, 23, 42, 0.15)',
 };
 
-// ─── Animation Timing ───────────────────────────────────────────────────────[...]
+// ─── Motion ───────────────────────────────────────────────────────────
 
 const motion = {
-  fast:     '120ms cubic-bezier(0.4, 0, 0.2, 1)',
-  base:     '220ms cubic-bezier(0.4, 0, 0.2, 1)',
-  slow:     '360ms cubic-bezier(0.4, 0, 0.2, 1)',
-  fadeIn:   { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } },
-  slideUp:  { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: 8 } },
+  fast:   '150ms cubic-bezier(0.16, 1, 0.3, 1)',
+  base:   '250ms cubic-bezier(0.16, 1, 0.3, 1)',
+  slow:   '350ms cubic-bezier(0.16, 1, 0.3, 1)',
 };
 
-// ─── Breakpoints ────────────────────────────────────────────────────────[...]
+// ─── Breakpoints ──────────────────────────────────────────────────────
 
 const breakpoints = {
+  xs: '0px',
   sm: '640px',
-  md: '900px',
-  lg: '1200px',
-  xl: '1440px',
+  md: '1024px',
+  lg: '1280px',
+  xl: '1536px',
 };
 
-// ─── MUI Theme Overrides ─────────────────────────────────────────────────────
+// ─── MUI Theme Overrides ──────────────────────────────────────────────
 
 function overrides() {
   return {
@@ -143,131 +159,146 @@ function overrides() {
       fontWeightRegular: 400,
       fontWeightMedium: 500,
       fontWeightBold: 600,
+      
       h1: {
         fontFamily: type.fontFamily.display,
-        fontSize:    type['4xl'],
+        fontSize: '36px',
         fontWeight: 600,
-        lineHeight:  type.leading.tight,
+        lineHeight: type.leading.tight,
         letterSpacing: type.tracking.tight,
         color: colors.ink,
+        marginBottom: '8px',
       },
       h2: {
         fontFamily: type.fontFamily.display,
-        fontSize:    type['3xl'],
+        fontSize: '28px',
         fontWeight: 600,
-        lineHeight:  1.25,
-        letterSpacing: type.tracking.tight,
+        lineHeight: type.leading.snug,
         color: colors.ink,
+        marginBottom: '12px',
       },
       h3: {
-        fontSize:    type['2xl'],
+        fontSize: '20px',
         fontWeight: 600,
-        lineHeight:  1.3,
-        letterSpacing: type.tracking.tight,
+        lineHeight: type.leading.snug,
         color: colors.ink,
+        marginBottom: '8px',
       },
       h4: {
-        fontSize:    type['xl'],
-        fontWeight: 500,
-        lineHeight:  1.35,
+        fontSize: '16px',
+        fontWeight: 600,
+        lineHeight: type.leading.snug,
         color: colors.ink,
       },
+      h5: {
+        fontSize: '14px',
+        fontWeight: 600,
+        lineHeight: type.leading.normal,
+        color: colors.ink,
+      },
+      h6: {
+        fontSize: '12px',
+        fontWeight: 600,
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
+        color: colors.quiet,
+      },
       body1: {
-        fontSize:    type.body,
-        lineHeight:  type.leading.regular,
+        fontSize: '14px',
+        lineHeight: type.leading.normal,
         color: colors.muted,
       },
       body2: {
-        fontSize:    type.sm,
-        lineHeight:  type.leading.regular,
+        fontSize: '12px',
+        lineHeight: type.leading.normal,
         color: colors.quiet,
       },
       overline: {
-        fontSize:    type.xs,
-        fontWeight: 500,
-        letterSpacing: '0.1em',
+        fontSize: '11px',
+        fontWeight: 600,
+        letterSpacing: '0.08em',
         textTransform: 'uppercase',
+        color: colors.ghost,
+      },
+      caption: {
+        fontSize: '12px',
+        lineHeight: type.leading.normal,
         color: colors.quiet,
       },
-      button: {
-        fontSize:    type.sm,
-        fontWeight: 500,
-        letterSpacing: type.tracking.normal,
-        textTransform: 'none',
-      },
     },
+    
     palette: {
       mode: 'light',
       background: {
-        default:    colors.paper,
-        paper:      colors.surface,
-        elevated:   colors.elevated,
+        default: colors.paper,
+        paper: colors.surface,
       },
       text: {
-        primary:   colors.ink,
+        primary: colors.ink,
         secondary: colors.muted,
-        disabled:  colors.ghost,
+        disabled: colors.ghost,
       },
-      divider:    colors.horizon,
+      divider: colors.horizon,
       primary: {
-        main:       colors.green[500],
-        light:      colors.green[100],
-        dark:       colors.green[700],
+        main: colors.green[600],
+        light: colors.green[50],
+        lighter: colors.green[100],
+        dark: colors.green[700],
+        darker: colors.green[900],
         contrastText: colors.surface,
       },
       secondary: {
-        main:       colors.ink,
-        light:      colors.elevated,
+        main: colors.emerald[500],
+        light: colors.emerald[50],
+        dark: colors.emerald[600],
+        contrastText: colors.surface,
       },
-      success: {
-        main:       colors.status.ok,
-      },
-      warning: {
-        main:       colors.status.caution,
-      },
-      error: {
-        main:       colors.status.danger,
-      },
-      info: {
-        main:       colors.status.info,
+      success: { main: colors.status.ok, light: colors.status.okLight },
+      warning: { main: colors.status.caution, light: colors.status.cautionLight },
+      error: { main: colors.status.danger, light: colors.status.dangerLight },
+      info: { main: colors.status.info, light: colors.status.infoLight },
+      action: {
+        active: colors.green[600],
+        hover: colors.green[50],
+        selected: colors.green[100],
+        disabled: colors.ghost,
+        disabledBackground: colors.bg,
       },
     },
+    
     shape: { borderRadius: radius.md },
-    spacing: (factor) => `${space.cell * factor}px`,
-    // Component overrides
+    spacing: (factor) => `${space.sm * factor}px`,
+    
     components: {
-      // ── Reset scrollbar
+      // Global styles
       MuiCssBaseline: {
         styleOverrides: {
+          html: { scrollBehavior: 'smooth' },
           body: {
             backgroundColor: colors.paper,
             color: colors.ink,
             fontFamily: type.fontFamily.body,
-            fontSize: type.body,
-            lineHeight: type.leading.regular,
-            letterSpacing: type.tracking.normal,
             WebkitFontSmoothing: 'antialiased',
             MozOsxFontSmoothing: 'grayscale',
-            // Scrollbar — minimal match
-            scrollbarColor: `${colors.wireframe} transparent`,
-            scrollbarWidth:  'thin',
-            '&::-webkit-scrollbar':          { width: 6, height: 6 },
-            '&::-webkit-scrollbar-thumb':    { backgroundColor: colors.wireframe, borderRadius: radius.pill },
-            '&::-webkit-scrollbar-track':    { backgroundColor: 'transparent' },
-            // Subtle grain for warmth (noise texture via SVG)
-            backgroundImage: `
-              radial-gradient(ellipse at 20% 30%, rgba(46,107,65,.02) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 70%, rgba(46,107,65,.015) 0%, transparent 50%)
-            `,
-            backgroundAttachment: 'fixed',
+            '&::-webkit-scrollbar': { width: 8, height: 8 },
+            '&::-webkit-scrollbar-track': { backgroundColor: colors.paper },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: colors.wireframe,
+              borderRadius: radius.pill,
+              '&:hover': { backgroundColor: colors.quiet },
+            },
           },
-          // Respect reduced motion
           '@media (prefers-reduced-motion: reduce)': {
-            '*': { animationDuration: '0ms !important', transitionDuration: '0ms !important' },
+            '*': {
+              animationDuration: '0.01ms !important',
+              animationIterationCount: '1 !important',
+              transitionDuration: '0.01ms !important',
+            },
           },
         },
       },
-      // ── Cards / Surfaces
+      
+      // Cards
       MuiPaper: {
         defaultProps: { elevation: 0 },
         styleOverrides: {
@@ -275,195 +306,202 @@ function overrides() {
             borderRadius: radius.lg,
             backgroundColor: colors.surface,
             border: `1px solid ${colors.horizon}`,
-            transition: `box-shadow ${motion.base}, border-color ${motion.fast}, transform ${motion.base}`,
+            transition: `all ${motion.base}`,
+            
             '&:hover': {
-              boxShadow: shadow.sm,
               borderColor: colors.wireframe,
+              boxShadow: shadow.md,
             },
           },
+          elevation0: { boxShadow: 'none' },
         },
       },
-      // ── Buttons — primary dominant, secondary brooding, text serene
+      
+      // Buttons
       MuiButton: {
         defaultProps: { disableElevation: true },
         styleOverrides: {
           root: {
             borderRadius: radius.md,
-            padding: '10px 22px',
             fontWeight: 500,
-            letterSpacing: type.tracking.normal,
+            fontSize: '14px',
+            textTransform: 'none',
             transition: `all ${motion.fast}`,
-            position: 'relative',
-            overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              backgroundColor: 'rgba(255, 255, 255, 0)',
-              transition: `background-color ${motion.fast}`,
-            },
-            '&:active::before': {
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            padding: '10px 20px',
+            border: 'none',
+            
+            '&:disabled': {
+              backgroundColor: colors.bg,
+              color: colors.ghost,
+              cursor: 'not-allowed',
             },
           },
+          
           containedPrimary: {
             backgroundColor: colors.green[600],
             color: colors.surface,
-            boxShadow: 'none',
+            boxShadow: shadow.sm,
+            
             '&:hover': {
               backgroundColor: colors.green[700],
               boxShadow: shadow.md,
-              transform: 'translateY(-2px)',
+              transform: 'translateY(-1px)',
             },
+            
             '&:active': {
               transform: 'translateY(0)',
-              boxShadow: shadow.sm,
-            },
-            '&:disabled': {
-              backgroundColor: colors.ghost,
-              color: colors.quiet,
-              boxShadow: 'none',
-            },
-          },
-          containedSecondary: {
-            backgroundColor: colors.paper,
-            color: colors.ink,
-            border: `1px solid ${colors.wireframe}`,
-            '&:hover': {
-              backgroundColor: colors.elevated,
-              borderColor: colors.horizon,
               boxShadow: shadow.xs,
             },
           },
-          contained: {
-            boxShadow: 'none',
-          },
-          outlined: {
+          
+          containedSecondary: {
+            backgroundColor: colors.emerald[50],
+            color: colors.emerald[700],
+            border: `1px solid ${colors.emerald[200]}`,
+            
             '&:hover': {
-              backgroundColor: colors.elevated,
-              borderColor: colors.wireframe,
+              backgroundColor: colors.emerald[100],
+              borderColor: colors.emerald[300],
             },
           },
-          text: {
-            backgroundColor: 'transparent',
+          
+          outlined: {
+            borderColor: colors.wireframe,
             color: colors.muted,
+            
+            '&:hover': {
+              backgroundColor: colors.elevated,
+              borderColor: colors.horizon,
+            },
+          },
+          
+          text: {
+            color: colors.muted,
+            
             '&:hover': {
               backgroundColor: colors.elevated,
               color: colors.ink,
             },
           },
-        },
-      },
-      // ── Chips / labels
-      MuiChip: {
-        defaultProps: { size: 'small' },
-        styleOverrides: {
-          root: {
-            borderRadius: radius.sm,
-            fontWeight: 500,
-            fontSize: type.xs,
-            letterSpacing: type.tracking.wide,
-            transition: `all ${motion.fast}`,
-            '&:hover': {
-              backgroundColor: colors.elevated,
-            },
+          
+          sizeLarge: {
+            padding: '14px 28px',
+            fontSize: '15px',
           },
-          filled: { border: `1px solid transparent` },
-          outlined: {
-            backgroundColor: 'transparent',
-            borderColor: colors.wireframe,
-            color: colors.muted,
-            '&:hover': {
-              borderColor: colors.horizon,
-              backgroundColor: colors.elevated,
-            },
+          
+          sizeSmall: {
+            padding: '7px 16px',
+            fontSize: '13px',
           },
         },
       },
-      // ── Dialog
-      MuiDialog: {
-        styleOverrides: {
-          paper: {
-            borderRadius: radius.xl,
-            boxShadow: shadow.xl,
-          },
-        },
-      },
-      MuiDialogTitle: {
-        styleOverrides: {
-          root: {
-            fontFamily: type.fontFamily.display,
-            fontSize: type['2xl'],
-            fontWeight: 600,
-            color: colors.ink,
-            paddingBottom: 0,
-          },
-        },
-      },
-      // ── Text fields
+      
+      // Text Fields
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
             backgroundColor: colors.elevated,
             borderRadius: radius.md,
             transition: `all ${motion.fast}`,
-            '& .MuiOutlinedInput-notchedOutline': { borderColor: colors.horizon },
-            '&:hover .MuiOutlinedInput-notchedOutline':   { borderColor: colors.wireframe },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { 
-              borderColor: colors.green[500], 
+            fontSize: '14px',
+            
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: colors.horizon,
+              transition: `border-color ${motion.fast}`,
+            },
+            
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: colors.wireframe,
+            },
+            
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: colors.green[500],
               borderWidth: '2px',
-              boxShadow: `0 0 0 3px ${colors.green[50]}`,
+              boxShadow: `0 0 0 4px ${colors.green[50]}`,
             },
           },
-          notchedOutline: {},
+          input: {
+            padding: '10px 12px',
+          },
         },
       },
+      
       MuiInputLabel: {
         styleOverrides: {
           root: {
             color: colors.quiet,
-            fontSize: type.xs,
-          },
-          shrink: {
-            color:        colors.muted,
-            backgroundColor: colors.elevated,
-            padding: '0 4px',
-            fontSize: type.xs,
-          },
-        },
-      },
-      // ── Tabs
-      MuiTabs: {
-        styleOverrides: {
-          root: { minHeight: 48, borderBottom: `1px solid ${colors.horizon}` },
-          indicator: {
-            height: 3,
-            backgroundColor: colors.green[600],
-            borderRadius: radius.pill,
+            fontSize: '13px',
+            fontWeight: 500,
+            
+            '&.Mui-focused': {
+              color: colors.green[600],
+            },
           },
         },
       },
-      MuiTab: {
+      
+      // Chips
+      MuiChip: {
+        defaultProps: { size: 'small' },
         styleOverrides: {
           root: {
+            borderRadius: radius.md,
+            fontSize: '12px',
             fontWeight: 500,
-            fontSize: type.sm,
-            textTransform: 'none',
-            minHeight: 48,
             transition: `all ${motion.fast}`,
-            '&.Mui-selected': { 
-              color: colors.green[700],
-              fontWeight: 600,
-            },
+            height: 28,
+          },
+          
+          filled: {
+            backgroundColor: colors.elevated,
+            color: colors.ink,
+            border: `1px solid ${colors.horizon}`,
+          },
+          
+          outlined: {
+            backgroundColor: 'transparent',
+            borderColor: colors.horizon,
+            color: colors.muted,
+            
             '&:hover': {
-              color: colors.ink,
+              backgroundColor: colors.elevated,
+              borderColor: colors.wireframe,
             },
+          },
+          
+          colorPrimary: {
+            backgroundColor: colors.green[100],
+            color: colors.green[700],
+            border: `1px solid ${colors.green[300]}`,
           },
         },
       },
-      // ── AppBar / Navigation
+      
+      // Dialogs
+      MuiDialog: {
+        styleOverrides: {
+          paper: {
+            borderRadius: radius.xl,
+            boxShadow: shadow.xl,
+            border: `1px solid ${colors.horizon}`,
+          },
+        },
+      },
+      
+      MuiDialogTitle: {
+        styleOverrides: {
+          root: {
+            fontSize: '20px',
+            fontWeight: 600,
+            color: colors.ink,
+            paddingBottom: '8px',
+          },
+        },
+      },
+      
+      // AppBar
       MuiAppBar: {
-        defaultProps: { elevation: 0, position: 'sticky' },
+        defaultProps: { elevation: 0 },
         styleOverrides: {
           root: {
             backgroundColor: colors.surface,
@@ -473,7 +511,45 @@ function overrides() {
           },
         },
       },
-      // ── Snackbar
+      
+      // Tabs
+      MuiTabs: {
+        styleOverrides: {
+          root: {
+            minHeight: 44,
+            borderBottom: `1px solid ${colors.horizon}`,
+          },
+          indicator: {
+            height: 3,
+            backgroundColor: colors.green[600],
+            borderRadius: radius.pill,
+          },
+        },
+      },
+      
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            fontSize: '14px',
+            fontWeight: 500,
+            textTransform: 'none',
+            transition: `all ${motion.fast}`,
+            color: colors.quiet,
+            
+            '&.Mui-selected': {
+              color: colors.green[700],
+              fontWeight: 600,
+            },
+            
+            '&:hover': {
+              color: colors.muted,
+              backgroundColor: colors.elevated,
+            },
+          },
+        },
+      },
+      
+      // Snackbar
       MuiSnackbarContent: {
         styleOverrides: {
           root: {
@@ -481,28 +557,52 @@ function overrides() {
             color: colors.surface,
             borderRadius: radius.md,
             boxShadow: shadow.lg,
+            fontSize: '13px',
           },
         },
       },
-      // ── LinearProgress
-      MuiLinearProgress: {
+      
+      // Menu
+      MuiMenuItem: {
         styleOverrides: {
-          root: { height: 3, borderRadius: radius.pill, backgroundColor: colors.horizon },
-          bar:   { borderRadius: radius.pill, backgroundColor: colors.green[500] },
+          root: {
+            fontSize: '14px',
+            transition: `all ${motion.fast}`,
+            
+            '&:hover': {
+              backgroundColor: colors.elevated,
+            },
+            
+            '&.Mui-selected': {
+              backgroundColor: colors.green[50],
+              color: colors.green[700],
+              fontWeight: 600,
+              
+              '&:hover': {
+                backgroundColor: colors.green[100],
+              },
+            },
+          },
         },
       },
-      // ── Drawer / Modal backdrop
-      MuiBackdrop: {
-        styleOverrides: { root: { backgroundColor: 'rgba(19,17,15,.4)' } },
+      
+      // Linear Progress
+      MuiLinearProgress: {
+        styleOverrides: {
+          root: {
+            height: 4,
+            borderRadius: radius.pill,
+            backgroundColor: colors.bg,
+          },
+          bar: {
+            borderRadius: radius.pill,
+            backgroundColor: colors.green[600],
+          },
+        },
       },
-      MuiSlide: { transition: { easing: motion.fast } },
     },
   };
 }
 
-// ─── Dark mode not supported. One paper. One surface. ───────────────────────
-
 export { type, space, colors, shadow, radius, motion, breakpoints, overrides };
-
-// Default theme — what the rest of the app imports as `theme`
 export default createTheme(overrides());
